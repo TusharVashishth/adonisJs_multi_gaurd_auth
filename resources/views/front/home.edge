@@ -1,0 +1,15 @@
+@layout('layouts/app.edge')
+@set('title' , 'Home Page')
+@section('content')
+@include('partials/header.edge')
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6">
+      <img src="/images/todo.svg" alt=".." class="home__img" />
+    </div>
+    <div class="col-lg-6 d-flex justify-content-center align-items-center">
+      <h1 class="fw-bolder">Welcome To the world Best Todo App</h1>
+    </div>
+  </div>
+</div>
+@endsection

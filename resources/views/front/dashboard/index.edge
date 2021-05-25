@@ -1,0 +1,8 @@
+@layout('layouts/app.edge')
+@set('title' , 'Home Page')
+@section('content')
+@include('partials/header.edge')
+<div class="container mt-5">
+    <h1>{{inspect(auth.use("web").user.email)}}</h1>
+</div>
+@endsection

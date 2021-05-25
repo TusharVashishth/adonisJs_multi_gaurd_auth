@@ -1,0 +1,45 @@
+@layout('layouts/app')
+@set('title' , 'Login Page')
+
+@section('content')
+@include('partials/header')
+<div class="container mt-5">
+    <div class="d-flex justify-content-center aligh-items-center">
+        <div class="card card-body shadow-lg">
+            @if(flashMessages.get('success'))
+            <div class="alert alert-success">
+                {{ flashMessages.get('success') }}
+            </div>
+            @elseif(flashMessages.get('error'))
+            <div class="alert alert-danger">
+                {{ flashMessages.get('error') }}
+            </div>
+            @end
+            <form method="POST" action="{{ route('login') }}">
+                <h1>Login Form</h1>
+                <div class="mt-2">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" placeholder="Enter Email" autofocus
+                        value="{{flashMessages.get('email' ,'')}}" />
+                    @if(flashMessages.has('errors.email'))
+                    <span class="text-danger">{{flashMessages.get('errors.email')}}</span>
+                    @endif
+                </div>
+                <div class="mt-2">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password" />
+                    @if(flashMessages.has('errors.password'))
+                    <span class="text-danger">{{flashMessages.get('errors.password')}}</span>
+                    @endif
+                </div>
+                <div class="text-end">
+                    <a href="/register" class="text-secondary text-decoration-none">Don't have an account?</a>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

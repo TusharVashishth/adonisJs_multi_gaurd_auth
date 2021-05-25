@@ -1,0 +1,50 @@
+@layout('layouts/app')
+@set('title' , 'Login Page')
+
+@section('content')
+@include('partials/header')
+<div class="container mt-5">
+    <div class="d-flex justify-content-center aligh-items-center">
+        <div class="card card-body shadow-lg">
+            <form method="POST" action="{{ route('register') }}">
+                <h1>Register Form</h1>
+                <div class="mt-2">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Name" autofocus
+                        value="{{flashMessages.get('name' ,'')}}" />
+                    @if(flashMessages.has('errors.name'))
+                    <span class="text-danger "> {{ flashMessages.get('errors.name') }} </span>
+                    @end
+                </div>
+                <div class="mt-2">
+                    <label>Email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Enter Email"
+                        value="{{flashMessages.get('email' ,'')}}" />
+                    @if(flashMessages.has('errors.email'))
+                    <span class="text-danger "> {{ flashMessages.get('errors.email') }} </span>
+                    @end
+                </div>
+                <div class="mt-2">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password"
+                        value="{{flashMessages.get('password' ,'')}}" />
+                    @if(flashMessages.has('errors.password'))
+                    <span class="text-danger "> {{ flashMessages.get('errors.password') }} </span>
+                    @end
+                </div>
+                <div class="mt-2">
+                    <label>Confirm Password</label>
+                    <input type="password" name="password_confirmation" class="form-control"
+                        placeholder="Confirm Password" />
+                    @if(flashMessages.has('errors.password_confirmation'))
+                    <span class="text-danger "> {{ flashMessages.get('errors.password_confirmation') }} </span>
+                    @end
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
